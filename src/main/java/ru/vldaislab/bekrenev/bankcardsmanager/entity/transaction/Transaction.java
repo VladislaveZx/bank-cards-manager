@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.vldaislab.bekrenev.bankcardsmanager.entity.card.Card;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -23,8 +24,10 @@ public class Transaction {
     @Column(name = "transaction_amount", nullable = false)
     private BigDecimal transactionAmount;
 
-    @Column(name = "transaction_time", nullable = false)
-    private LocalDateTime transactionTime;
+    @Column(name = "transaction_date_time", nullable = false)
+    private LocalDateTime transactionDateTime;
 
-
+    @ManyToOne
+    @JoinColumn(name = "card_id")
+    private Card card;
 }

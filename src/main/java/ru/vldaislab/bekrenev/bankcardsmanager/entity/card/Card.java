@@ -25,16 +25,9 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-//    @Column(name = "encrypted_card_number", nullable = false)
-//    private String encryptedCardNumber;
-
-    /**
-     * Владелец карты
-     */
-    @Column(name = "owner", nullable = false)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User owner;
-
 
     /**
      * Срок действия
@@ -56,7 +49,4 @@ public class Card {
     @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
 
-    @OneToMany
-    private Transaction transaction;
-    //TODO: добавить историю транзакций (связь с Transaction)
 }

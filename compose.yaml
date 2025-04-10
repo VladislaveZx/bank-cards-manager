@@ -1,10 +1,10 @@
-services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=bank-cards-manager'
-      - 'POSTGRES_PASSWORD=8801243'
-      - 'POSTGRES_USER=postgres'
-    ports:
-      - '5432'
+#services:
+#  postgres:
+#    image: 'postgres:latest'
+#    environment:
+#      - 'POSTGRES_DB=bank-cards-manager'
+#      - 'POSTGRES_PASSWORD=8801243'
+#      - 'POSTGRES_USER=postgres'
+#    ports:
+#      - '5432'
 #TODO
