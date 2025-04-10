@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-card
+      author: Vladislav
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_cards_users_user_id
+                    nullable: false
+              - column:
+                  name: expiry_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: card_status
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(38,2)
+
+
+
+

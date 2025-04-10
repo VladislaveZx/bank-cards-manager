@@ -33,7 +33,7 @@ public class Card {
      * Срок действия
      */
     @Column(name = "expiry_date", nullable = false)
-    private YearMonth yearMonth;
+    private YearMonth expiryDate;
 
 
     /**

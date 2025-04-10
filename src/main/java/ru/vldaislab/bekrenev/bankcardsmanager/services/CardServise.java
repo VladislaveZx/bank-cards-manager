@@ -1,7 +1,6 @@
 package ru.vldaislab.bekrenev.bankcardsmanager.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vldaislab.bekrenev.bankcardsmanager.entity.card.Card;
@@ -22,13 +21,13 @@ public class CardServise {
     private final UserRepository userRepository;
 
     @Transactional
-    public Card createCard(Long userId, YearMonth expiryDate) {
+    public Card createCard(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь не найден"));
 
         Card card = new Card();
         card.setOwner(user);
-        card.setYearMonth(YearMonth.now().plusYears(5));
+        card.setExpiryDate(YearMonth.now().plusYears(5));
         card.setCardStatus(CardStatus.ACTIVE); // По умолчанию карта активна
         card.setBalance(java.math.BigDecimal.ZERO); // Начальный баланс
 
@@ -44,6 +43,7 @@ public class CardServise {
         Card card = cardRepository.getCardsById(cardId);
         card.setCardStatus(CardStatus.BLOCKED);
     }
+
     public void chngeCardStatusOnExpired(UUID cardId) {
         Card card = cardRepository.getCardsById(cardId);
         card.setCardStatus(CardStatus.EXPIRED);
