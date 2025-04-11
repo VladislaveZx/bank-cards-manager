@@ -15,17 +15,17 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: name
-                  type: varchar(30)
+                  type: varchar
                   constraints:
                     nullable: false
               - column:
                   name: email
-                  type: varchar(60)
+                  type: varchar
                   constraints:
                     nullable: false
               - column:
                   name: password
-                  type: varchar(200)
+                  type: varchar
                   constraints:
                     nullable: false
               - column:
