@@ -18,21 +18,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TransactionService {
     private final CardRepository cardRepository;
-    private final UserRepository userRepository;
-    private final CardService cardService;
     private final TransactionRepository transactionRepository;
 
-    public List<Transaction> getTransactionsByCardId(Long cardId) {
-        Card card = cardRepository.findById(cardId)
-                .orElseThrow(()->new CardNotFoundExeption("Карта с таким номером не найдена"));
-        return transactionRepository.findTransactionByCard(card);
+    public List<Transaction> getTransactionsByCardId(Long cardId) throws CardNotFoundExeption {
+        return transactionRepository.getTransactionByCardId(cardId);
     }
 
     public void makeTransaction(BigDecimal amount, Long cardIdFrom, Long cardIdTo) {
         Transaction transaction = new Transaction();
         transaction.setTransactionAmount(amount);
         transaction.setTransactionDateTime(LocalDateTime.now());
-        transaction.setCard(cardRepository.getCardsById(cardIdFrom));
+        transaction.setCardFrom(cardRepository.getCardsById(cardIdFrom));
+        transaction.setCardTo(cardRepository.getCardsById(cardIdTo));
 
         Card cardFrom = cardRepository.getCardsById(cardIdFrom);
         cardFrom.setBalance(cardFrom.getBalance().subtract(amount));
@@ -43,11 +40,5 @@ public class TransactionService {
         cardRepository.save(cardTo);
 
         transactionRepository.save(transaction);
-    }
-
-    public void makeTransactionTo(BigDecimal amount, Long cardIdFrom) {
-    }
-    public void makeTransactionFrom(BigDecimal amount, Long cardIdTo) {
-
     }
 }

@@ -9,6 +9,7 @@ import ru.vldaislab.bekrenev.bankcardsmanager.entity.user.User;
 import ru.vldaislab.bekrenev.bankcardsmanager.exeptions.card.CardStatusExeption;
 import ru.vldaislab.bekrenev.bankcardsmanager.exeptions.user.UserNotFoundException;
 import ru.vldaislab.bekrenev.bankcardsmanager.repositories.CardRepository;
+import ru.vldaislab.bekrenev.bankcardsmanager.repositories.TransactionRepository;
 import ru.vldaislab.bekrenev.bankcardsmanager.repositories.UserRepository;
 
 import java.math.BigDecimal;
@@ -21,6 +22,7 @@ public class CardService {
 
     private final CardRepository cardRepository;
     private final UserRepository userRepository;
+    private final TransactionRepository transactionRepository;
 
 
     public List<Card> getCards() {
@@ -80,4 +82,5 @@ public class CardService {
         Card card = cardRepository.getCardsById(cardId);
         cardRepository.delete(card);
     }
+
 }

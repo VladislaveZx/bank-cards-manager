@@ -34,6 +34,10 @@ public class Transaction {
 //            inverseJoinColumns = @JoinColumn(name = "card_id")
 //    )
     @ManyToOne
-    @JoinColumn(name = "card_id")
-    private Card card;
+    @JoinColumn(name = "card_id_from", referencedColumnName = "id")
+    private Card cardFrom;
+
+    @ManyToOne
+    @JoinColumn(name = "card_id_to", referencedColumnName = "id")
+    private Card cardTo;
 }
