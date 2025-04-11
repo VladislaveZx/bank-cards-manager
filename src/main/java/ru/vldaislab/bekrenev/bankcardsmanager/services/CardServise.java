@@ -34,20 +34,21 @@ public class CardServise {
         return cardRepository.save(card);
     }
 
-    public void chngeCardStatusOnActive(UUID cardId) {
+    public void chngeCardStatusOnActive(Long cardId) {
         Card card = cardRepository.getCardsById(cardId);
         card.setCardStatus(CardStatus.ACTIVE);
     }
 
-    public void chngeCardStatusOnBlocked(UUID cardId) {
+    public void chngeCardStatusOnBlocked(Long cardId) {
         Card card = cardRepository.getCardsById(cardId);
         card.setCardStatus(CardStatus.BLOCKED);
     }
 
-    public void chngeCardStatusOnExpired(UUID cardId) {
+    public void chngeCardStatusOnExpired(Long cardId) {
         Card card = cardRepository.getCardsById(cardId);
         card.setCardStatus(CardStatus.EXPIRED);
     }
+
 
 
 }

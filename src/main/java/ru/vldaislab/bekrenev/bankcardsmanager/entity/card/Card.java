@@ -4,12 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.vldaislab.bekrenev.bankcardsmanager.entity.transaction.Transaction;
 import ru.vldaislab.bekrenev.bankcardsmanager.entity.user.User;
 
 import java.math.BigDecimal;
 import java.time.YearMonth;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -18,12 +16,16 @@ import java.util.UUID;
 @Table(name = "cards")
 public class Card {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
     /**
      * Номер карты (masked, хранится в зашифрованном виде)
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Column(name = "card_number", length = 16, nullable = false, unique = true)
+    private String cardNumber;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changeset/create-user-table.yaml
   - include:
       file: db/changelog/changeset/create-card.yaml
+  - include:
+      file: db/changelog/changeset/create-transaction.yaml

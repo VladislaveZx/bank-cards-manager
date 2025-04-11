@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-transaction
+      author: Vladislav
+      changes:
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: varchar(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: transaction_amount
+                  type: numeric
+                  constraints:
+                    nullable: false
+                    checkConstraint: "transaction_amount <= 50000"
+              - column:
+                  name: transaction_date_time
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+
+
+
+
+
+
