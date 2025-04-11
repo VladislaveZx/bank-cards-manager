@@ -27,6 +27,12 @@ public class Transaction {
     @Column(name = "transaction_date_time", nullable = false)
     private LocalDateTime transactionDateTime;
 
+//    @ManyToMany
+//    @JoinTable(
+//            name = "transactions_cards",
+//            joinColumns = @JoinColumn(name = "transaction_id"),
+//            inverseJoinColumns = @JoinColumn(name = "card_id")
+//    )
     @ManyToOne
     @JoinColumn(name = "card_id")
     private Card card;
