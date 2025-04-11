@@ -8,10 +8,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: uuid
+                  type: bigint
                   constraints:
                     primaryKey: true
                     nullable: false
+              - column:
+                  name: card_number
+                  type: varchar
               - column:
                   name: user_id
                   type: bigint

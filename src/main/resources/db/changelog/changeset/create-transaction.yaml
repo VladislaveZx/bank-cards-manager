@@ -23,10 +23,9 @@ databaseChangeLog:
                   type: datetime
                   constraints:
                     nullable: false
-
-
-
-
-
-
-
+              - column:
+                  name: card_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_transactions_cards_card_id
+                    nullable: false
