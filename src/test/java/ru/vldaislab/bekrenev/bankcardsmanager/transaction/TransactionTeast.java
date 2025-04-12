@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RequiredArgsConstructor
-public class TransactionTeas {
+public class TransactionTeast {
     private final TransactionRepository transactionRepository;
     private final TransactionService transactionService;
     private final CardRepository cardRepository;

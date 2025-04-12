@@ -2,6 +2,7 @@ package ru.vldaislab.bekrenev.bankcardsmanager.services.transaction;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.vldaislab.bekrenev.bankcardsmanager.entity.card.Card;
 import ru.vldaislab.bekrenev.bankcardsmanager.entity.transaction.Transaction;
 import ru.vldaislab.bekrenev.bankcardsmanager.exeptions.card.CardNotFoundExeption;
@@ -24,6 +25,7 @@ public class TransactionService {
         return transactionRepository.getTransactionByCardId(cardId);
     }
 
+    @Transactional
     public void makeTransaction(BigDecimal amount, Long cardIdFrom, Long cardIdTo) {
         Transaction transaction = new Transaction();
         transaction.setTransactionAmount(amount);
